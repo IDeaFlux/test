@@ -73,7 +73,7 @@ Cache::config('default', array('engine' => 'File'));
  */
 CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
 CakePlugin::load('AclExtras'); //Acl Extras plugin to create ACOs
-
+CakePlugin::load('ContactManager'); //Loads a single plugin
 /**
  * You can attach event listeners to the request lifecycle as Dispatcher Filter . By Default CakePHP bundles two filters:
  *
@@ -98,6 +98,12 @@ Configure::write('Dispatcher.filters', array(
 /**
  * Configures default file logging options
  */
+CakePlugin::loadAll(array(
+    'Blog' => array('routes' => true),
+    'ContactManager' => array('bootstrap' => true),
+    'WebmasterTools' => array('bootstrap' => true, 'routes' => true),
+));
+
 App::uses('CakeLog', 'Log');
 CakeLog::config('debug', array(
 	'engine' => 'FileLog',
